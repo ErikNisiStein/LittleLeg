@@ -19,22 +19,20 @@ public class BD extends SQLiteOpenHelper{
 
     static  final  int  VERSAO  = 1  ;
 
-
-
     public BD (Context context ) {
             super (context, NOME_BANCO, null, VERSAO);
         }
 
     public void onCreate(SQLiteDatabase db){
-        db . execSQL ( " CREATE TABLE "  +  TABELA  +  " ( "  +
+        db.execSQL ( " CREATE TABLE "  +  TABELA  +  " ( "  +
                 ID  +  " PRIMARY KEY AUTOINCREMENT, "  +
-                PRODUTO  +  " TEXTO, "  +
-                DATAPAG  +  " DATA, " +
-                DATACOMP + " DATA, " +
-                COMPRADOR + " TEXTO, " +
-                VALOR + " FLOAT, " +
-                STATUS + "CHAR "+
-                QTD+ "INTEGER"+
+                PRODUTO  +  " TEXT, "  +
+                DATAPAG  +  " TEXT, " +
+                DATACOMP + " TEXT, " +
+                COMPRADOR + " TEXT, " +
+                VALOR + " TEXT, " +
+                STATUS + " TEXT, " +
+                QTD + " INTEGER " +
                 " ) " );
 
     }
