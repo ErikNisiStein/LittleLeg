@@ -32,7 +32,7 @@ public class BD extends SQLiteOpenHelper{
                 COMPRADOR + " TEXT, " +
                 VALOR + " TEXT, " +
                 STATUS + " TEXT, " +
-                QTD + " INTEGER " +
+                QTD + " TEXT " +
                 " ) " );
 
     }
