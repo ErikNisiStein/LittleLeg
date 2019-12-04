@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Arquivados"></activity>
-        <activity android:name=".CadastraProdutos">
+        <activity android:name=".CadastraProdutos"></activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
