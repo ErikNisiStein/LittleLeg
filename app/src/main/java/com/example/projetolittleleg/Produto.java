@@ -10,6 +10,9 @@ public class Produto {
     public String STATUS;
     public String QTD;
 
+    public static final String STATUS_ATIVO = "0";
+    public static final String STATUS_ARQUIVADO = "1";
+
     public Produto(Integer ID, String PRODUTO, String DATAPAG, String DATACOMP, String COMPRADOR, String VALOR, String STATUS, String QTD) {
         this.ID = ID;
         this.PRODUTO = PRODUTO;

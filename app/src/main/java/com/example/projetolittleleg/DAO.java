@@ -63,10 +63,10 @@ public class DAO {
         db.close();
     }
 
-    public ArrayList<Produto> obterListaProdutos(){
+    public ArrayList<Produto> obterListaProdutos(String arq_ou_nao){
         ArrayList<Produto> produtos = new ArrayList<>();
         SQLiteDatabase db = this.bd.getReadableDatabase();
-        Cursor cursor = db.query(BD.TABELA, this.columns, null, null, null, null, null);
+        Cursor cursor = db.query(BD.TABELA, this.columns, BD.STATUS + " = " + arq_ou_nao, null, null, null, null);
 
         if(cursor != null){
             cursor.moveToFirst();
