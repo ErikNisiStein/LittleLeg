@@ -7,6 +7,25 @@
     tools:context=".CadastraProdutos">
 
     <EditText
+
+        android:id="@+id/edt_comprador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="35dp"
+        android:ems="10"
+        android:hint="Comprador"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/edt_Produto"
+        app:layout_constraintEnd_toStartOf="@+id/edt_Produto"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_DatComp"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
         android:gravity="top"
         android:id="@+id/edt_Produto"
         android:layout_width="368dp"
@@ -31,7 +50,7 @@
         />
 
     <EditText
-        android:id="@+id/edt_Compra"
+        android:id="@+id/edt_DatComp"
         android:layout_width="120dp"
         android:layout_height="35dp"
         android:layout_marginStart="24dp"
@@ -60,25 +79,6 @@
         android:text="Limpar"
         app:layout_constraintBaseline_toBaselineOf="@+id/btn_inserir"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-
-        android:id="@+id/edt_comprador"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="7dp"
-        android:layout_marginBottom="35dp"
-        android:ems="10"
-        android:hint="Comprador"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/edt_Produto"
-        app:layout_constraintEnd_toStartOf="@+id/edt_Produto"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_Compra"
-        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/edt_valor"
@@ -128,6 +128,6 @@
         android:layout_marginTop="16dp"
         android:text="Status"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/edt_Compra"
+        app:layout_constraintStart_toEndOf="@+id/edt_DatComp"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
