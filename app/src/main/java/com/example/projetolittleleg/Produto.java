@@ -6,11 +6,11 @@ public class Produto {
     public String  DATAPAG;
     public String  DATACOMP;
     public String  COMPRADOR;
-    public float VALOR;
+    public String VALOR;
     public String STATUS;
-    public int QTD;
+    public String QTD;
 
-    public Produto(Integer ID, String PRODUTO, String DATAPAG, String DATACOMP, String COMPRADOR, float VALOR, String STATUS, int QTD) {
+    public Produto(Integer ID, String PRODUTO, String DATAPAG, String DATACOMP, String COMPRADOR, String VALOR, String STATUS, String QTD) {
         this.ID = ID;
         this.PRODUTO = PRODUTO;
         this.DATAPAG = DATAPAG;
@@ -21,7 +21,7 @@ public class Produto {
         this.QTD = QTD;
     }
 
-    public Produto(String PRODUTO, String DATAPAG, String DATACOMP, String COMPRADOR, float VALOR, String STATUS, int QTD) {
+    public Produto(String PRODUTO, String DATAPAG, String DATACOMP, String COMPRADOR, String VALOR, String STATUS, String QTD) {
         this.PRODUTO = PRODUTO;
         this.DATAPAG = DATAPAG;
         this.DATACOMP = DATACOMP;
