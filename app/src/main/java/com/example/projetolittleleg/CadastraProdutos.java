@@ -42,7 +42,6 @@ public class CadastraProdutos extends AppCompatActivity {
 
         bd = new BD(this);
 
-
         //carrega campos
         dataCompra = findViewById(R.id.edt_DatComp);
         dataPag = findViewById(R.id.edt_DatPag);
@@ -63,7 +62,6 @@ public class CadastraProdutos extends AppCompatActivity {
 
         // carrega spinner
         load_spinner(sp);
-
 
         //função botoes
         inserir.setOnClickListener(new View.OnClickListener() {
