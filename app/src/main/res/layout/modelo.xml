@@ -6,7 +6,7 @@
     android:orientation="horizontal">
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/controle"
         android:layout_width="30dp"
         android:layout_height="wrap_content" />
 
@@ -14,29 +14,38 @@
         android:id="@+id/dEntrada"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="Data de Entrada" />
 
     <TextView
         android:id="@+id/dSaida"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="Data de Saída" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Status" />
 
     <TextView
         android:id="@+id/descricao"
-        android:layout_width="170dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="Descrição" />
 
     <TextView
         android:id="@+id/comprador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="Comprador" />
 
     <TextView
-        android:id="@+id/quantidade"
-        android:layout_width="30dp"
+        android:id="@+id/valor"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_weight="1"
+        android:text="Valor" />
+
 </LinearLayout>
