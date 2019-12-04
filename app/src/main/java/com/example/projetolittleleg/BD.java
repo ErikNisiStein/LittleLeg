@@ -15,7 +15,7 @@ public class BD extends SQLiteOpenHelper{
     static  final  String  COMPRADOR  =  " comprador " ;
     static  final  String  VALOR = "valor";
     static  final  String STATUS= "status";
-    static  final  String QTD= "qtd";
+
 
     static  final  int  VERSAO  = 1  ;
 
@@ -31,9 +31,10 @@ public class BD extends SQLiteOpenHelper{
                 DATACOMP + " TEXT, " +
                 COMPRADOR + " TEXT, " +
                 VALOR + " TEXT, " +
-                STATUS + " TEXT, " +
-                QTD + " TEXT " +
+                STATUS + " TEXT " +
                 " ) " );
+
+
 
     }
 
