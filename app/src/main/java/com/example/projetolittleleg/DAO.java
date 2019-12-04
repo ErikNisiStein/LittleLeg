@@ -65,7 +65,7 @@ public class DAO {
         SQLiteDatabase db = this.bd.getReadableDatabase();
         Cursor cursor = db.query(BD.TABELA, this.columns, BD.STATUS + " = " + arq_ou_nao, null, null, null, null);
 
-        if(cursor != null){
+        if(cursor != null && cursor.getCount()>0){
             cursor.moveToFirst();
             do {
                 Produto prod = new Produto(cursor.getInt(0), cursor.getString(1), cursor.getString(2),
