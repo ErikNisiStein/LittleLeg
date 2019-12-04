@@ -31,7 +31,7 @@ public class CadastraProdutos extends AppCompatActivity {
     Button limpar;
 
     BD bd;
-    DAO dao;
+    DAO banco;
     Spinner sp;
 
     @Override
@@ -39,8 +39,6 @@ public class CadastraProdutos extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastra_produtos);
-
-        dao = new DAO(this  );
 
         bd = new BD(this);
 
@@ -78,8 +76,7 @@ public class CadastraProdutos extends AppCompatActivity {
                 //objeto Produto com campos
                 final Produto prod = new Produto(produtos.getText().toString(), dataPag.getText().toString(), dataCompra.getText().toString(),
                         comprador.getText().toString(), valor.getText().toString(), status);
-                dao.criarProduto(prod);
-                finish();
+                clear();
 
             }
         });
