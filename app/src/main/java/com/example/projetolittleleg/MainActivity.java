@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity
 
         dao = new DAO(getApplicationContext());
 
-        dadosBanco = dao.obterListaProdutos(Produto.STATUS_ATIVO);
+        //dadosBanco = dao.obterListaProdutos(Produto.STATUS_ATIVO);
         adap = new Adaptador(this, dadosBanco);
 
         listaProdutos = findViewById(R.id.listViewMain);

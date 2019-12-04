@@ -68,10 +68,10 @@ public class CadastraProdutos extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //verifica status p/ inserção
-                if (sp.equals("Pendente")) {
-                    status = "0";
-                } else if (sp.equals("Pago")) {
-                    status = "1";
+                if (sp.getSelectedItem().equals("Pendente")) {
+                    status = Produto.STATUS_ATIVO;
+                } else if (sp.getSelectedItem().equals("Pago")) {
+                    status = Produto.STATUS_ARQUIVADO;
                 }
                 //objeto Produto com campos
                 final Produto prod = new Produto(produtos.getText().toString(), dataPag.getText().toString(), dataCompra.getText().toString(),
