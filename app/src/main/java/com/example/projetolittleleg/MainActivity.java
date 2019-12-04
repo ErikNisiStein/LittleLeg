@@ -17,6 +17,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
 {
+    DAO dao = new DAO(getApplicationContext());
     Adaptador adap;
     ListView listaProdutos;
     ArrayList<Produto> dadosBanco;
@@ -40,13 +41,18 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        DAO dao = new DAO(getApplicationContext());
 
         dadosBanco = dao.obterListaProdutos(Produto.STATUS_ATIVO);
         adap = new Adaptador(this, dadosBanco);
 
         listaProdutos = findViewById(R.id.listViewMain);
         listaProdutos.setAdapter(adap);
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        dadosBanco = dao.obterListaProdutos(Produto.STATUS_ATIVO);
     }
 
     @Override
