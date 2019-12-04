@@ -66,19 +66,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
+        android:layout_marginTop="225dp"
+        android:layout_marginEnd="94dp"
         android:layout_marginBottom="75dp"
         android:text="Inserir"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_limpar" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_limpar"
+        app:layout_constraintTop_toBottomOf="@+id/edt_DatPag" />
 
     <Button
         android:id="@+id/btn_limpar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="113dp"
+        android:layout_marginTop="147dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="75dp"
         android:text="Limpar"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btn_inserir"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_inserir"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_valor" />
 
     <EditText
         android:id="@+id/edt_valor"

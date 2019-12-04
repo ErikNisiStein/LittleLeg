@@ -12,7 +12,10 @@ import android.widget.Spinner;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class CadastraProdutos extends AppCompatActivity {
     Date data = new Date();
@@ -39,8 +42,11 @@ public class CadastraProdutos extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastra_produtos);
-        dao = new DAO(this);
+        dao = new DAO(getApplicationContext());
         bd = new BD(this);
+
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //carrega campos
         dataCompra = findViewById(R.id.edt_DatComp);
@@ -67,16 +73,20 @@ public class CadastraProdutos extends AppCompatActivity {
         inserir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //verifica status p/ inserção
                 if (sp.getSelectedItem().equals("Pendente")) {
                     status = Produto.STATUS_ATIVO;
+                    System.out.println("pendente");
                 } else if (sp.getSelectedItem().equals("Pago")) {
                     status = Produto.STATUS_ARQUIVADO;
+                    System.out.println("arquivado");
                 }
-                //objeto Produto com campos
-                final Produto prod = new Produto(produtos.getText().toString(), dataPag.getText().toString(), dataCompra.getText().toString(),
+                //objeto Produto com campo
+                Produto prod = new Produto(produtos.getText().toString(), dataPag.getText().toString(), dataCompra.getText().toString(),
                         comprador.getText().toString(), valor.getText().toString(), status);
                 dao.criarProduto(prod);
+
                 finish();
 
             }
@@ -91,13 +101,12 @@ public class CadastraProdutos extends AppCompatActivity {
 
 public void load_spinner(Spinner sp)
 {
-    String[] arraySpinner = new String[] {
-            " Pendente ", " Pago "
-    };
+    List<String> arraySpinner = new ArrayList<>(Arrays.asList("Pendente", "Pago"));
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
             android.R.layout.simple_spinner_item, arraySpinner);
     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    sp.setAdapter(adapter);
+   sp.setAdapter(adapter);
+
 }
 
 public void clear (){

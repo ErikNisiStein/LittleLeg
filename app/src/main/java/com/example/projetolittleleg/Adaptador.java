@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.ThemedSpinnerAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

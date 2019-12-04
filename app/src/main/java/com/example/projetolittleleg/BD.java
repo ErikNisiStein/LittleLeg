@@ -25,7 +25,7 @@ public class BD extends SQLiteOpenHelper{
 
     public void onCreate(SQLiteDatabase db){
         db.execSQL ( " CREATE TABLE "  +  TABELA  +  " ( "  +
-                ID  +  " INTEGER PRIMARY KEY AUTOINCREMENT, "  +
+                ID  +  " INT PRIMARY KEY AUTOINCREMENT, "  +
                 PRODUTO  +  " TEXT, "  +
                 DATAPAG  +  " TEXT, " +
                 DATACOMP + " TEXT, " +
