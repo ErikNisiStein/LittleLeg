@@ -16,8 +16,7 @@ public class DAO {
             BD.DATACOMP,
             BD.COMPRADOR,
             BD.VALOR,
-            BD.STATUS,
-            BD.QTD
+            BD.STATUS
     };
 
     public DAO(Context ctx){
@@ -34,7 +33,6 @@ public class DAO {
         values.put(BD.COMPRADOR, prod.COMPRADOR);
         values.put(BD.VALOR, prod.VALOR);
         values.put(BD.STATUS, prod.STATUS);
-        values.put(BD.QTD, prod.QTD);
 
         long id = db.insert(BD.TABELA, null, values);
         db.close();
@@ -57,27 +55,25 @@ public class DAO {
         values.put(BD.COMPRADOR, prod.COMPRADOR);
         values.put(BD.VALOR, prod.VALOR);
         values.put(BD.STATUS, prod.STATUS);
-        values.put(BD.QTD, prod.QTD);
 
         db.update(BD.TABELA, values, BD.ID + " = " + prod.ID, null);
         db.close();
     }
 
-    public ArrayList<Produto> obterListaProdutos(){
+    public ArrayList<Produto> obterListaProdutos(String arq_ou_nao){
         ArrayList<Produto> produtos = new ArrayList<>();
         SQLiteDatabase db = this.bd.getReadableDatabase();
-        Cursor cursor = db.query(BD.TABELA, this.columns, null, null, null, null, null);
+        Cursor cursor = db.query(BD.TABELA, this.columns, BD.STATUS + " = " + arq_ou_nao, null, null, null, null);
 
         if(cursor != null){
             cursor.moveToFirst();
             do {
                 Produto prod = new Produto(cursor.getInt(0), cursor.getString(1), cursor.getString(2),
-                        cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6),
-                cursor.getString(7));
+                        cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6));
                 produtos.add(prod);
             } while(cursor.moveToNext());
+            cursor.close();
         }
-
         return produtos;
     }
 }

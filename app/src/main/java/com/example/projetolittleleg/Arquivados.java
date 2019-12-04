@@ -1,22 +1,15 @@
 package com.example.projetolittleleg;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class MainActivity extends AppCompatActivity
-{
+public class Arquivados extends AppCompatActivity {
+
     Adaptador adap;
     ListView listaProdutos;
     ArrayList<Produto> dadosBanco;
@@ -42,31 +35,10 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         DAO dao = new DAO(getApplicationContext());
 
-        dadosBanco = dao.obterListaProdutos(Produto.STATUS_ATIVO);
+        dadosBanco = dao.obterListaProdutos(Produto.STATUS_ARQUIVADO);
         adap = new Adaptador(this, dadosBanco);
 
         listaProdutos = findViewById(R.id.listViewMain);
         listaProdutos.setAdapter(adap);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item)
-    {
-        if (item.getItemId()==R.id.add)
-        {
-            Intent intent = new Intent(this,CadastraProdutos.class);
-            startActivity(intent);
-        }
-        else if (item.getItemId()==R.id.arquivados)
-        {
-            Intent intent = new Intent(this, Arquivados.class);
-            startActivity(intent);
-        }
-        if (item.getItemId()==R.id.arquivar)
-        {
-            Intent intent = new Intent();
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
