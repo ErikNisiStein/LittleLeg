@@ -16,8 +16,7 @@ public class DAO {
             BD.DATACOMP,
             BD.COMPRADOR,
             BD.VALOR,
-            BD.STATUS,
-            BD.QTD
+            BD.STATUS
     };
 
     public DAO(Context ctx){
@@ -34,7 +33,6 @@ public class DAO {
         values.put(BD.COMPRADOR, prod.COMPRADOR);
         values.put(BD.VALOR, prod.VALOR);
         values.put(BD.STATUS, prod.STATUS);
-        values.put(BD.QTD, prod.QTD);
 
         long id = db.insert(BD.TABELA, null, values);
         db.close();
@@ -57,7 +55,6 @@ public class DAO {
         values.put(BD.COMPRADOR, prod.COMPRADOR);
         values.put(BD.VALOR, prod.VALOR);
         values.put(BD.STATUS, prod.STATUS);
-        values.put(BD.QTD, prod.QTD);
 
         db.update(BD.TABELA, values, BD.ID + " = " + prod.ID, null);
         db.close();
@@ -72,8 +69,7 @@ public class DAO {
             cursor.moveToFirst();
             do {
                 Produto prod = new Produto(cursor.getInt(0), cursor.getString(1), cursor.getString(2),
-                        cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6),
-                cursor.getString(7));
+                        cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6));
                 produtos.add(prod);
             } while(cursor.moveToNext());
         }
