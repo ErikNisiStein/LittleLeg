@@ -1,7 +1,7 @@
 package com.example.projetolittleleg;
 
 public class Produto {
-    public Integer  ID;
+    public Integer ID;
     public String  PRODUTO;
     public String  DATAPAG;
     public String  DATACOMP;
