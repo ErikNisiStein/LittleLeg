@@ -44,6 +44,7 @@ public class DAO {
     public void removerProduto(Produto prod){
         SQLiteDatabase db = this.bd.getWritableDatabase();
         db.delete(BD.TABELA, BD.ID + " = " + prod.ID, null);
+        db.close();
     }
 
     public void alterarProduto(Produto prod){ContentValues values = new ContentValues();
@@ -63,7 +64,7 @@ public class DAO {
     public ArrayList<Produto> obterListaProdutos(String arq_ou_nao){
         ArrayList<Produto> produtos = new ArrayList<>();
         SQLiteDatabase db = this.bd.getReadableDatabase();
-        Cursor cursor = db.query(BD.TABELA, this.columns, BD.STATUS + " = " + arq_ou_nao, null, null, null, null);
+        Cursor cursor = db.query(BD.TABELA, this.columns, BD.STATUS + " = '" + arq_ou_nao + "'", null, null, null, null);
 
         if(cursor != null && cursor.getCount()>0){
             cursor.moveToFirst();
@@ -74,6 +75,7 @@ public class DAO {
             } while(cursor.moveToNext());
             cursor.close();
         }
+        db.close();
         return produtos;
     }
 }

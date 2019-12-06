@@ -2,16 +2,20 @@ package com.example.projetolittleleg;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.Calendar;
 import java.util.Date;
 
 public class CadastraProdutos extends AppCompatActivity {
@@ -34,11 +38,17 @@ public class CadastraProdutos extends AppCompatActivity {
     DAO dao;
     Spinner sp;
 
+    Calendar myCalendar = Calendar.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastra_produtos);
+
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         dao = new DAO(this);
         bd = new BD(this);
 
@@ -68,9 +78,9 @@ public class CadastraProdutos extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //verifica status p/ inserção
-                if (sp.getSelectedItem().equals("Pendente")) {
+                if (sp.getSelectedItem().equals(" Pendente ")) {
                     status = Produto.STATUS_ATIVO;
-                } else if (sp.getSelectedItem().equals("Pago")) {
+                } else if (sp.getSelectedItem().equals(" Pago ")) {
                     status = Produto.STATUS_ARQUIVADO;
                 }
                 //objeto Produto com campos
@@ -87,6 +97,42 @@ public class CadastraProdutos extends AppCompatActivity {
                 clear();
             }
         });
+
+        dataCompra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(CadastraProdutos.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        myCalendar.set(Calendar.YEAR, year);
+                        myCalendar.set(Calendar.MONTH, month);
+                        myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        dataCompra.setText(dayOfMonth + "/" + month + "/" + year);
+                    }
+                }, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+        dataPag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(CadastraProdutos.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        myCalendar.set(Calendar.YEAR, year);
+                        myCalendar.set(Calendar.MONTH, month);
+                        myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        dataPag.setText(dayOfMonth + "/" + month + "/" + year);
+                    }
+                }, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
     }
 
 public void load_spinner(Spinner sp)

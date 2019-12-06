@@ -21,10 +21,13 @@ public class MainActivity extends AppCompatActivity
     Adaptador adap;
     ListView listaProdutos;
     ArrayList<Produto> dadosBanco;
+    ArrayList<Produto> selecionados;
+    Menu menu;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
+        this.menu = menu;
         getMenuInflater().inflate(R.menu.menu,menu);
         return super.onCreateOptionsMenu(menu);
     }
@@ -46,11 +49,13 @@ public class MainActivity extends AppCompatActivity
 
         dao = new DAO(getApplicationContext());
 
-        //dadosBanco = dao.obterListaProdutos(Produto.STATUS_ATIVO);
-        adap = new Adaptador(this, dadosBanco);
+        dadosBanco = dao.obterListaProdutos(Produto.STATUS_ATIVO);
+        adap = new Adaptador(this, dadosBanco, this, null);
 
         listaProdutos = findViewById(R.id.listViewMain);
         listaProdutos.setAdapter(adap);
+
+        selecionados = new ArrayList<>();
     }
 
     @Override
@@ -66,11 +71,35 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, Arquivados.class);
             startActivity(intent);
         }
-        if (item.getItemId()==R.id.arquivar)
+        else if (item.getItemId()==R.id.arquivar)
         {
-            Intent intent = new Intent();
-            startActivity(intent);
+            for(Produto prod : selecionados){
+                prod.STATUS = Produto.STATUS_ARQUIVADO;
+                dao.alterarProduto(prod);
+                dadosBanco.remove(prod);
+            }
+            selecionados.clear();
+            showHideMenuOnSelection();
+            adap.notifyDataSetChanged();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void addItemToSelection(Produto produto){
+        selecionados.add(produto);
+        showHideMenuOnSelection();
+    }
+
+    public void removeItemToSelection(Produto produto){
+        selecionados.remove(produto);
+        showHideMenuOnSelection();
+    }
+
+    public void showHideMenuOnSelection(){
+        if(selecionados.size() > 0){
+            menu.getItem(1).setVisible(true);
+        }else{
+            menu.getItem(1).setVisible(false);
+        }
     }
 }

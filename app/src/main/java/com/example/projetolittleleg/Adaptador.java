@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,16 +21,21 @@ public class Adaptador extends ArrayAdapter<DAO>
 {
     Context ctx;
     ArrayList<Produto> produtos;
+    MainActivity activity;
+    Arquivados arq;
 
-    public Adaptador (Context ctx, ArrayList<Produto> produtos)
+    public Adaptador (Context ctx, ArrayList<Produto> produtos, MainActivity activity, Arquivados arq)
     {
         super(ctx, R.layout.modelo);
+        this.ctx = ctx;
+        this.activity = activity;
         this.produtos = produtos;
+        this.arq = arq;
     }
 
     @Override
     public int getCount() {
-        return super.getCount();
+        return this.produtos.size();
     }
 
     @NonNull
@@ -52,6 +58,19 @@ public class Adaptador extends ArrayAdapter<DAO>
         dSaida.setText(produto.DATAPAG);
         status.setText(produto.STATUS);
         CheckBox controle = view.findViewById(R.id.controle);
+
+            controle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        if(activity != null) activity.addItemToSelection(produto);
+                        if(arq != null) arq.selecionParaRemocao(produto);
+                    } else {
+                        if(activity != null) activity.removeItemToSelection(produto);
+                        if(arq != null) arq.removerSelecao(produto);
+                    }
+                }
+            });
 
         return view;
     }
